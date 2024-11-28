@@ -7,8 +7,8 @@ import (
 )
 
 type Sos struct {
-	ID          uint `gorm:"primaryKey"`
-	Title       string
+	ID          uint   `gorm:"primaryKey"`
+	Title       string `gorm:"not null"`
 	Description string
 	UserId      uint
 	User        User
