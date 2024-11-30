@@ -7,12 +7,13 @@ import (
 )
 
 type Sos struct {
-	ID          uint   `gorm:"primaryKey"`
-	Title       string `gorm:"not null"`
-	Description string
+	Title       string `json:"title" gorm:"not null"`
+	Description string `json:"description"`
 	UserId      uint
 	User        User
-	CreatedAt   time.Time
-	UpdatedAt   time.Time
-	DeletedAt   gorm.DeletedAt
+	// orm default
+	ID        uint `gorm:"primaryKey"`
+	CreatedAt time.Time
+	UpdatedAt time.Time
+	DeletedAt gorm.DeletedAt
 }
