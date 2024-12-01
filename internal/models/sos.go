@@ -9,8 +9,11 @@ import (
 type Sos struct {
 	Title       string `json:"title" gorm:"not null"`
 	Description string `json:"description"`
-	UserId      uint
-	User        User
+
+	// user relationship
+	UserID uint `json:"userId"`
+	User   User
+
 	// orm default
 	ID        uint `gorm:"primaryKey"`
 	CreatedAt time.Time

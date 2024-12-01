@@ -22,6 +22,9 @@ func main() {
 	r.HandleFunc("/users/{id}", handlers.DeleteUserByID).Methods("DELETE")
 	r.HandleFunc("/users/{id}", handlers.UpdateUserByID).Methods("PUT")
 
+	r.HandleFunc("/sos", handlers.GetAllSos).Methods("GET")
+	r.HandleFunc("/sos/{id}", handlers.GetSosByID).Methods("GET")
+
 	r.HandleFunc("/signup", handlers.Signup).Methods("POST")
 	r.HandleFunc("/login", handlers.Login).Methods("POST")
 
@@ -29,6 +32,10 @@ func main() {
 	protected.Use(middleware.JWTAuthMiddleware)
 
 	protected.HandleFunc("/profile", handlers.Profile).Methods("GET")
+
+	protected.HandleFunc("/sos", handlers.CreateSos).Methods("POST")
+	protected.HandleFunc("/sos/{id}", handlers.UpdateSosByID).Methods("PUT")
+	protected.HandleFunc("/sos/{id}", handlers.DeleteSosByID).Methods("DELETE")
 
 	log.Println("Server is running on port: 8080...")
 
